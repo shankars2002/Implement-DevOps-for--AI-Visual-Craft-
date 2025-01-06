@@ -1,0 +1,19 @@
+global:
+  scrape_interval: 15s # How often to scrape targets by default.
+  evaluation_interval: 15s # How often to evaluate rules.
+
+scrape_configs:
+  # Scrape configuration for the AI Artistic Style Service
+  - job_name: "ai-artistic-style-service"
+    static_configs:
+      - targets: ["ai-artistic-style:5001"]
+
+  # Scrape configuration for Node Exporter (System-level metrics)
+  - job_name: "node-exporter"
+    static_configs:
+      - targets: ["<node_exporter_host>:9100"]
+
+  # Scrape configuration for cAdvisor (Container resource usage)
+  - job_name: "cadvisor"
+    static_configs:
+      - targets: ["<cadvisor_host>:8080"]
